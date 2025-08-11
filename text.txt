@@ -1,18 +1,19 @@
 Init:
-Assign targets edge case: odd # of players
+Get badge ids by pinging everyone. And when you ping everyone, they all respond to the sender's id.
+48217
+Assign targets edge case:
+Host has list of all badge ids, then sends to each badge "Your target is id x"
+- store said id somewhere
+
 Optional: Time limit
 Proximity kill one button -> Plays buzzer on other person.
 Optional: Minigame to save self
 
 Game loop:
-listen for the pings.
-When pinged: Kill, and if killed, send ping back to killer to say "u were within range i died"
-When killer recieves ping:
-Yay!
+listen for the pings. Killers can only ping their killees.
+when pinged killers die.
 
-#How encode this as bytes:
-"T": "Killer" or "killee"
-
-Variables to keep track of:
-Who is alive
-Whose target is who (dict?)
+Types of pings:
+- setup ping -> "S"
+- response ping -> "R"
+- kill ping -> "K"

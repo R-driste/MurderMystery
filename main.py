@@ -1,19 +1,10 @@
 from player import Player
 import badge
 
-#three screens, host, game dets, lobby
 class App(badge.BaseApp):
     def on_open(self) -> None:
-        self.target = None
-        self.name = None
-        self.status = None
-        self.id_img = None
-        self.badge_id = None
-        self
-
-    def add_player(self, player: Player) -> None:
-        self.active_players.append(player)
-        self.logger.info(f"Added player: {player}")
+        self.target_id = None
+        self.players = []
 
     def render_screen(self) -> None:
         badge.display.fill(1)
@@ -22,7 +13,7 @@ class App(badge.BaseApp):
 
     #main welcome screen
     def on_packet(self, packet: badge.radio.Packet, in_foreground: bool) -> None:
-        if packet.app_number != YOUR_APP_NUMBER:
+        if packet.app_number != 48217:
             return
         try:
             data_str = packet.data.decode("utf-8")
@@ -39,8 +30,7 @@ class App(badge.BaseApp):
 
     def render_welcome(self) -> None:
         badge.display.nice_text("Welcome to\nKraken!", 0, 0, font=32, color=0)
-        badge.display.nice_text("Press Top Left to\nstart a game", 0, 64, font=24, color=0)
-        badge.display.nice_text("Press Top Right to\join a game", 0, 64, font=24, color=0)
+        badge.display.nice_text("Press Top Left to\nstart the game", 0, 64, font=24, color=0)
 
     #host screen
     def render_host(self) -> None:
