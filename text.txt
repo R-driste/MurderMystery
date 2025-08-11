@@ -1,0 +1,18 @@
+Init:
+Assign targets edge case: odd # of players
+Optional: Time limit
+Proximity kill one button -> Plays buzzer on other person.
+Optional: Minigame to save self
+
+Game loop:
+listen for the pings.
+When pinged: Kill, and if killed, send ping back to killer to say "u were within range i died"
+When killer recieves ping:
+Yay!
+
+#How encode this as bytes:
+"T": "Killer" or "killee"
+
+Variables to keep track of:
+Who is alive
+Whose target is who (dict?)
