@@ -1,0 +1,6 @@
+{
+  "appNumber": 1234,
+  "displayName": "PacketTest",
+  "permissions": ["radio:receive", "radio:send", "contacts:write"],
+  "version": "1.0.0"
+}
