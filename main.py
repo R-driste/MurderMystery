@@ -4,7 +4,12 @@ import badge
 #three screens, host, game dets, lobby
 class App(badge.BaseApp):
     def on_open(self) -> None:
-        self.
+        self.target = None
+        self.name = None
+        self.status = None
+        self.id_img = None
+        self.badge_id = None
+        self
 
     def add_player(self, player: Player) -> None:
         self.active_players.append(player)
@@ -53,19 +58,7 @@ class App(badge.BaseApp):
     
     #render game details
     def render_dets(self) -> None:
-        if self.personal_player.role == "unassigned":
-            badge.display.nice_text("Error. You have not\nbeen assigned\na role yet.", 0, 0, font=32, color=0)
-        elif self.personal_player.role == "Kraken":
-            badge.display.nice_text("You are a\nKraken member!", 0, 0, font=32, color=0)
-        elif self.personal_player.role == "Villager":
-            badge.display.nice_text("You are a\nVillager!", 0, 0, font=32, color=0)
-        elif self.personal_player.role == "cop":
-            badge.display.nice_text("You are a\nCop!", 0, 0, font=32, color=0)
-        else:
-            badge.display.nice_text("Something went wrong with your role!", 0, 0, font=32, color=0)
-
-        badge.display.nice_text("Game Details", 0, 0, font=32, color=0)
-        badge.display.nice_text(f"Role: {self.personal_player.role}", 0, 0, font=32, color=0)
+        badge.display.nice_text(f"You are tasked to kill: {self.target}", 0, 0, font=32, color=0)
         badge.display.nice_text("Player Statuses:", 0, 64, font=24, color=0)
         y_offset = 100
         for player in self.active_players:
