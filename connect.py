@@ -3,6 +3,7 @@ import badge
 class App(badge.BaseApp):
     def on_open(self) -> None:
         self.all_active_contacts = []
+        self.assignments = []
         self.host_id = 888
 
     def send_badge_id_to_host(self):
@@ -29,9 +30,9 @@ class App(badge.BaseApp):
         if len(self.all_contacts) < 2:
             self.logger.warning("Not enough contacts to assign killers!")
             return
-        for i, contact in enumerate(self.all_contacts):
-            contact.target = self.all_contacts[(i + 1) % len(self.all_contacts)]
-            self.logger.info(f"Assigned {contact.name} to kill {contact.target.name}")
+        else:
+            needed_nums = self.get_pseudo_random()
+            self.assignments = needed_nums
     
     def get_pseudo_random():
         valid = False
@@ -43,16 +44,16 @@ class App(badge.BaseApp):
             hash_pos_val += str(abs(hash(input_str_2)))
 
             fix = ""
-            i = 0
+            i = 1
             unique = ['0']
             print(hash_pos_val)
             for char in hash_pos_val:
-                i += 1
                 print(char, ",", unique, ",", fix)
                 c = int(char)
                 if c > num_len or c == i or str(c) in unique:
                     continue
                 else:
+                    i += 1
                     fix += char
                     unique.append(char)
 

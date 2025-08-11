@@ -9,16 +9,16 @@ while not valid:
     hash_pos_val += str(abs(hash(input_str_2)))
 
     fix = ""
-    i = 0
+    i = 1
     unique = ['0']
     print(hash_pos_val)
     for char in hash_pos_val:
-        i += 1
         print(char, ",", unique, ",", fix)
         c = int(char)
         if c > num_len or c == i or str(c) in unique:
             continue
         else:
+            i += 1
             fix += char
             unique.append(char)
 
