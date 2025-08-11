@@ -68,8 +68,6 @@ class App(badge.BaseApp):
                     i += 1
                     fix += char
                     unique.append(char)
-
-            print(fix)
             valid = True if len(fix) == num_len else False
         return fix
 
